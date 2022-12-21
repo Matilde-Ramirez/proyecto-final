@@ -1,0 +1,16 @@
+{% extends 'ejemplo/base_obreros.html' %}
+{% block titulo%} Buscar Obreros por nombre {% endblock %}
+{% block contenido %}
+  
+  <form action="/Obreros/buscar" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Buscar">
+  </form>
+
+  {% for obreros in lista_obreros %}
+      <ul>
+          <li> Nombre: {{obreros.nombre}}, Categoria: {{obreros.categoria}}, Edad: {{obreros.edad}}</li>
+      </ul>
+  {% endfor %}
+{% endblock %}

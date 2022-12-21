@@ -1,0 +1,14 @@
+{% extends 'ejemplo/base_obreros.html' %}
+{% block titulo%} Alta de nuevo Obrero {% endblock %}
+{% block contenido %}
+  
+  <form action="/Obreros/alta" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Agregar">
+  </form>
+
+  <h2 style="color:green">{{msg_exito}}</h2>
+
+  <a href=""/ejemplo">Volver a la lista de Obreros</a>
+{% endblock %}
