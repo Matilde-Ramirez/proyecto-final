@@ -13,26 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path
-from ejemplo.views import (AltaObra, AltaObrero, BorrarFamiliar, BuscarObra, BuscarObrero, index, BuscarFamiliar, AltaFamiliar, ActualizarFamiliar, mostrar_familiares, mostrar_obreros)
+from ejemplo.views import (index, mostrar_familiares, BuscarFamiliar, 
+                            AltaFamiliar, ActualizarFamiliar, FamiliarDetalle, FamiliarList, FamiliarCrear,FamiliarBorrar, FamiliarActualizar) # <--- NUEVO IMPORT
 
 urlpatterns = [
-      
-      
       path('admin/', admin.site.urls),
       path('saludar/', index),
-      path('mi-familia/', mostrar_familiares), # nueva vista
-      path('mi-familia/buscar', BuscarFamiliar.as_view()),
+      path('mi-familia/', mostrar_familiares),
+      path('mi-familia/buscar', BuscarFamiliar.as_view()), 
       path('mi-familia/alta', AltaFamiliar.as_view()),
       path('mi-familia/actualizar/<int:pk>', ActualizarFamiliar.as_view()),
-      path('mi-familia/borrar/<int:pk>', BorrarFamiliar.as_view()), 
-      path('Obrero/', mostrar_obreros), 
-      path('Obrero/buscar', BuscarObrero.as_view()),
-      path('Obrero/alta', AltaObrero.as_view()),
-      path('Obra/alta', AltaObra.as_view()),
-      path('Obra/buscar', BuscarObra.as_view()),
-     
-     
+      path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
+      path('panel-familia/', FamiliarList.as_view()), 
+      path('panel-familia/crear', FamiliarCrear.as_view()),
+      path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), 
+      path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
   ]
- 

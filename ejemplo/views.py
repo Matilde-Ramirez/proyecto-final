@@ -3,6 +3,7 @@ from ejemplo.models import  Familiar, Obras
 from ejemplo.models import Obreros
 from ejemplo.forms import  ObrasForm, ObrerosForm, Buscar, ObrasForm, FamiliarForm
 from django.views import View 
+from django.views.generic import DetailView, ListView, CreateView, DeleteView, UpdateView
 
 # Create your views here.
 def index(request):
@@ -169,3 +170,24 @@ class BuscarObra(View):
             return render(request, self.template_name, {'form':form, 
                                                         'lista_obras':lista_obras})
         return render(request, self.template_name, {"form": form})
+
+class FamiliarDetalle(DetailView):
+  model = Familiar
+
+class FamiliarList(ListView):
+ model = Familiar
+
+class FamiliarCrear(CreateView):
+  model = Familiar
+  success_url = "/panel-familia"
+  fields = ["nombre", "direccion", "numero_pasaporte"]
+
+
+class FamiliarActualizar(UpdateView):
+  model = Familiar
+  success_url = "/panel-familia"
+  fields = ["nombre", "direccion", "numero_pasaporte"]
+
+class FamiliarBorrar(DeleteView):
+  model = Familiar
+  success_url = "/panel-familia"
