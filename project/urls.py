@@ -19,27 +19,12 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
-from ejemplo.views import ( FamiliarBorrar, index, mostrar_familiares, BuscarFamiliar, AltaFamiliar, FamiliarActualizar, FamiliarDetalle, FamiliarList, FamiliarCrear, )
-from matilde.views import (PostCrear, PostListar, PostDetalle, PostActualizar, index, UserSignUp, UserLogin, UserLogout, PostBorrar, AvatarActualizar, UserActualizar, MensajeCrear, MensajeDetalle, MensajeListar)
 from django.contrib.admin.views.decorators import staff_member_required
+from matilde.views import (PostCrear, PostListar, PostDetalle, PostActualizar, index, UserSignUp, UserLogin, UserLogout, PostBorrar, AvatarActualizar, UserActualizar, MensajeCrear, MensajeDetalle, MensajeListar)
 
 
 urlpatterns = [
-      path('admin/', admin.site.urls),
-      path('saludar/', index),
-      path('mi-familia/', mostrar_familiares),
-      path('mi-familia/buscar', BuscarFamiliar.as_view()), 
-      path('mi-familia/alta', AltaFamiliar.as_view()),
-      path('mi-familia/actualizar/<int:pk>', FamiliarActualizar.as_view()),
-      path('panel-familia/<int:pk>/detalle', FamiliarDetalle.as_view()),
-      path('panel-familia/', FamiliarList.as_view()), 
-      path('panel-familia/crear', FamiliarCrear.as_view()),
-      path('panel-familia/<int:pk>/borrar', FamiliarBorrar.as_view()), 
-      path('panel-familia/<int:pk>/actualizar', FamiliarActualizar.as_view()), # NUEVA RUTA PARA LISTAR FAMILIAR
-      path('ejemplo-dos/', index, name="ejemplo-dos-index"),
-      path('ejemplo-dos/listar/posts', PostListar.as_view(), name="ejemplo-dos-listar"),
-      path('ejemplo-dos/crear/', PostCrear.as_view(), name="ejemplo-dos-crear"),
-       path('success_updated_message/',TemplateView.as_view(template_name="ejemplo/success_updated_message.html")),
+
    path('matilde/', index, name="matilde-index"),
    path('matilde/<int:pk>/detalle/', PostDetalle.as_view(), name="matilde-detalle"),
    path('matilde/listar/', PostListar.as_view(), name="matilde-listar"),

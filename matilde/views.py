@@ -5,14 +5,14 @@ from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.admin import User
 from matilde.forms import UsuarioForm
 from matilde.models import Avatar, Post, Mensaje
-from django.contrib.auth.admin import User
- 
+
  
 def index(request):
    posts = Post.objects.order_by('-publicado_el').all()
-   return render(request, "ejemplo_dos/index.html", {"posts": posts})
+   return render(request, "matilde/index.html", {"posts": posts})
  
 class PostDetalle(DetailView):
    model = Post
@@ -20,7 +20,7 @@ class PostDetalle(DetailView):
 class PostListar(ListView):
    model = Post 
  
-class PostCrear(LoginRequiredMixin, CreateView):
+class PostCrear(LoginRequiredMixin,CreateView):
    model = Post
    success_url = reverse_lazy("matilde-listar")
    fields = '__all__'
@@ -58,10 +58,10 @@ class UserActualizar(UpdateView):
    success_url = reverse_lazy('matilde-listar')
  
  
-class MensajeDetalle(LoginRequiredMixin, DetailView):
+class MensajeDetalle(DetailView):
    model = Mensaje
  
-class MensajeListar(LoginRequiredMixin, ListView):
+class MensajeListar(ListView):
    model = Mensaje 
  
 class MensajeCrear(CreateView):

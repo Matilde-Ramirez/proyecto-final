@@ -1,5 +1,8 @@
-# proyecto-final
-Proyecto Matilde Ramírez, se agregan dos modelos donde se definen Obreros y Obras de construcción.
-Los datos se cargan a través del archivo seed_data.py al principio para tener datos de prueba.
-A través del comando python3 manage.py shell < seed_data.py
-## Django
+
+
+# Entrega final
+Se realiza un blog en base a la plantilla usada en el curso. Se crea un proyecto nuevo llamado Matilde, el objetivo es un blog sobre Arquitectura.
+
+# Link al GitHub
+https://github.com/Matilde-Ramirez
+

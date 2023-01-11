@@ -1,13 +1,15 @@
 
 {% extends 'matilde/base.html' %}
- 
+
 {% block contenido %}
+<center>
 <ul>
 {% for mensaje in object_list %}
-   <li>
-       {{mensaje.enviado_el}} - - {{mensaje.email}} -- {{mensaje.nombre}}
-       <a href="{% url 'matilde-mensajes-detalle' mensaje.id %}">Ver</a>
-   </li>
+    <li>
+        {{mensaje.enviado_el}} - - {{mensaje.email}} -- {{mensaje.nombre}} 
+        <a href="{% url 'matilde-mensajes-detalle' mensaje.id %}">Ver</a>
+    </li>
 {% endfor %}
 </ul>
+</center>
 {% endblock %}

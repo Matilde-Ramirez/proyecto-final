@@ -2,6 +2,7 @@
 {% extends 'matilde/base.html' %}
  
 {% block contenido %}
+   <center>
    <h1>{{object.titulo}}</h1>
    <h2>{{object.sub_titulo}}</h2>
    <div>
@@ -10,5 +11,5 @@
    <div>
        {{object.texto}}
    </div>
-  
+   </center>
 {% endblock %}
