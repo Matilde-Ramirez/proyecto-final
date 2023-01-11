@@ -1,0 +1,24 @@
+{% extends 'matilde/base.html' %}
+ 
+{% block contenido %}
+{% if user.is_authenticated %}
+   <a href="{% url 'matilde-crear' %}">Crear Post</a>
+   {% if user.avatar.imagen %}
+       <a href="{% url 'matilde-avatars-actualizar' user.id %}">Actualizar Avatar</a>
+   {% endif %}
+   <a href="{% url 'matilde-users-actualizar' user.id %}">Actualizar Profile</a>
+   <a href="{% url 'matilde-mensajes-listar' %}">Mensajes</a>
+{% endif %}
+<ul>
+{% for post in object_list %}
+   <li>
+       {{post.publicado_el}} - - {{post.titulo}}
+       {% if user.is_superuser %}
+           <a href="{% url 'matilde-borrar' post.id %}">Borrar</a>
+           <a href="{% url 'matilde-actualizar' post.id %}">Actualizar</a>
+       {% endif %}
+       <a href="{% url 'matilde-detalle' post.id %}">Ver</a>
+   </li>
+{% endfor %}
+</ul>
+{% endblock %}
